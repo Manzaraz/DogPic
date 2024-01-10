@@ -10,10 +10,27 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("🐶Dog Pics!")
+                .font(Font.custom("Avenir Next Condensed", size: 60))
+                .bold()
+                .foregroundStyle(.brown)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+            
+            Spacer()
+            
+            Button {
+                //TODO: Add action here
+            } label: {
+                Text("Any Random Dog")
+                    .bold()
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.brown)
+            .padding(.bottom)
+                
+            
+            
         }
         .padding()
     }
