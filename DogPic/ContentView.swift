@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    enum Breed: String, CaseIterable {
+        case boxer, bulldog, chihuahua, corgi, labradoodle, poodle, pug, retriver
+    }
+    
+    @State private var selectedBreed: Breed = .boxer
+    
     var body: some View {
         VStack {
             Text("🐶Dog Pics!")
@@ -19,18 +25,30 @@ struct ContentView: View {
             
             Spacer()
             
-            Button {
-                //TODO: Add action here
-            } label: {
-                Text("Any Random Dog")
-                    .bold()
+            Button("Any Random Dog") {
+                //TODO: Add search random dog functionality
             }
+            .bold()
             .buttonStyle(.borderedProminent)
             .tint(.brown)
             .padding(.bottom)
+            
+            HStack {
                 
-            
-            
+                Button("Show Breed") {
+                    //TODO: Add search random dog functionality
+                }
+                .buttonStyle(.borderedProminent)
+                .padding(.bottom)
+    
+                Picker("", selection: $selectedBreed) {
+                    ForEach(Breed.allCases, id: \.self) { breed in
+                        Text(breed.rawValue.capitalized)
+                    }
+                }
+            }
+            .bold()
+            .tint(.brown)
         }
         .padding()
     }
