@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6179D1AB2B4F4A4800BBF1FB /* DogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6179D1AA2B4F4A4800BBF1FB /* DogViewModel.swift */; };
 		619C524E2B4F2C4A004ADA80 /* DogPicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C524D2B4F2C4A004ADA80 /* DogPicApp.swift */; };
 		619C52502B4F2C4A004ADA80 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C524F2B4F2C4A004ADA80 /* ContentView.swift */; };
 		619C52522B4F2C4C004ADA80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 619C52512B4F2C4C004ADA80 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6179D1AA2B4F4A4800BBF1FB /* DogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogViewModel.swift; sourceTree = "<group>"; };
 		619C524A2B4F2C4A004ADA80 /* DogPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		619C524D2B4F2C4A004ADA80 /* DogPicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogPicApp.swift; sourceTree = "<group>"; };
 		619C524F2B4F2C4A004ADA80 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 				619C525B2B4F2DAA004ADA80 /* Info.plist */,
 				619C524D2B4F2C4A004ADA80 /* DogPicApp.swift */,
 				619C524F2B4F2C4A004ADA80 /* ContentView.swift */,
+				6179D1AA2B4F4A4800BBF1FB /* DogViewModel.swift */,
 				619C52512B4F2C4C004ADA80 /* Assets.xcassets */,
 				619C52532B4F2C4C004ADA80 /* Preview Content */,
 			);
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6179D1AB2B4F4A4800BBF1FB /* DogViewModel.swift in Sources */,
 				619C52502B4F2C4A004ADA80 /* ContentView.swift in Sources */,
 				619C524E2B4F2C4A004ADA80 /* DogPicApp.swift in Sources */,
 			);

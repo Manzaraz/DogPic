@@ -12,6 +12,7 @@ struct ContentView: View {
         case boxer, bulldog, chihuahua, corgi, labradoodle, poodle, pug, retriver
     }
     
+    @StateObject var DogVM = DogViewModel()
     @State private var selectedBreed: Breed = .boxer
     
     var body: some View {
@@ -26,15 +27,16 @@ struct ContentView: View {
             Spacer()
             
             Button("Any Random Dog") {
-                //TODO: Add search random dog functionality
+                Task {
+                    await DogVM.getData()
+                }
             }
             .bold()
             .buttonStyle(.borderedProminent)
             .tint(.brown)
             .padding(.bottom)
             
-            HStack {
-                
+            HStack (alignment: .firstTextBaseline) {
                 Button("Show Breed") {
                     //TODO: Add search random dog functionality
                 }
