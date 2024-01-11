@@ -26,6 +26,36 @@ struct ContentView: View {
             
             Spacer()
             
+            if DogVM.imageURL != "" {
+                AsyncImage(url: URL(string: DogVM.imageURL)) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                        .shadow(radius: 15)
+                        .minimumScaleFactor(0.5)
+                        .animation(.easeInOut, value: image)
+                        
+                } placeholder: {
+                    ZStack {
+                        ProgressView()
+                            .tint(.red)
+
+                        Image(systemName: "photo.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundStyle(.brown)
+                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                            .shadow(radius: 15)
+                        
+                    }
+                }
+                
+            }
+
+            
+            Spacer()
+            
             Button("Any Random Dog") {
                 Task {
                     await DogVM.getData()
