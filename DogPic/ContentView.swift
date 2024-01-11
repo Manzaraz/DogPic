@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
+import AVFAudio
 
 struct ContentView: View {
     enum Breed: String, CaseIterable {
-        case boxer, bulldog, chihuahua, corgi, labradoodle, poodle, pug, retriver
+        case boxer, englishBulldog = "bulldog/english", chihuahua, goldenRetriever = "retriever/golden", beagle, pug, labrador, maltese, bassetHound = "hound/basset", pointer
     }
+
     
     @StateObject var DogVM = DogViewModel()
-    @State private var selectedBreed: Breed = .boxer
+    @State private var selectedBreed: Breed = .maltese
+    @State private var audioPlayer: AVAudioPlayer!
     
     var body: some View {
         VStack {
@@ -57,6 +60,7 @@ struct ContentView: View {
             Spacer()
             
             Button("Any Random Dog") {
+                DogVM.urlString = "https://dog.ceo/api/breeds/image/random"
                 Task {
                     await DogVM.getData()
                 }
@@ -68,21 +72,43 @@ struct ContentView: View {
             
             HStack (alignment: .firstTextBaseline) {
                 Button("Show Breed") {
-                    //TODO: Add search random dog functionality
+                    DogVM.urlString = "https://dog.ceo/api/breed/\(selectedBreed.rawValue)/images/random"
+                    Task {
+                        await DogVM.getData()
+                    }
+
                 }
                 .buttonStyle(.borderedProminent)
-                .padding(.bottom)
+                .padding(.horizontal)
     
                 Picker("", selection: $selectedBreed) {
                     ForEach(Breed.allCases, id: \.self) { breed in
-                        Text(breed.rawValue.capitalized)
+                        Text(breed.rawValue.split(separator: "/").reversed().joined(separator: " ").capitalized)
                     }
                 }
+                
             }
             .bold()
             .tint(.brown)
         }
         .padding()
+        .onAppear {
+            playSound(soundName: "bark")
+        }
+    }
+    
+    func playSound(soundName: String) {
+        guard let soundFile = NSDataAsset(name: soundName) else { 
+            print("🤬 ERROR: Could not read file named \(soundName)")
+            return
+        }
+        
+        do {
+            audioPlayer =  try AVAudioPlayer(data: soundFile.data)
+            audioPlayer.play()
+        } catch {
+            print("🤬 ERROR:  \(error.localizedDescription) creating audioPlayer.")
+        }
     }
 }
 
